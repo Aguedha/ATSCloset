@@ -3,111 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ATScloset - Moda Feminina</title>
+  <title>ATScloset - Elegância Minimalista</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
+    
     :root {
       --rose-gold: #b76e79;
-      --rose-gold-light: #d4a1a5;
-      --text-color: #333;
-      --bg-color: #fff;
-      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --text-color: #1a1a1a;
+      --text-secondary: #555555;
+      --bg-color: #ffffff;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Roboto', sans-serif;
+    }
+    * {
+      box-sizing: border-box;
     }
     body {
       margin: 0;
       background: var(--bg-color);
       color: var(--text-color);
-      font-family: var(--font-family);
+      font-family: var(--font-sans);
       line-height: 1.6;
     }
     header {
-      border-bottom: 2px solid var(--rose-gold);
-      padding: 1rem 2rem;
+      border-bottom: 1px solid #eee;
+      padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     header h1 {
-      color: var(--rose-gold);
+      font-family: var(--font-serif);
       font-weight: 700;
+      font-size: 2.2rem;
+      color: var(--text-color);
       margin: 0;
-      font-size: 1.8rem;
+      letter-spacing: 0.1em;
     }
     nav a {
       text-decoration: none;
-      color: var(--rose-gold);
-      margin-left: 1.5rem;
-      font-weight: 600;
+      color: var(--text-secondary);
+      margin-left: 2rem;
+      font-weight: 500;
+      font-size: 1rem;
       transition: color 0.3s ease;
+      letter-spacing: 0.05em;
     }
     nav a:hover {
-      color: var(--rose-gold-light);
+      color: var(--rose-gold);
+      border-bottom: 2px solid var(--rose-gold);
+      padding-bottom: 4px;
     }
     main {
-      padding: 2rem;
       max-width: 900px;
-      margin: auto;
+      margin: 3rem auto 4rem;
+      padding: 0 1.5rem;
     }
     section h2 {
-      color: var(--rose-gold);
+      font-family: var(--font-serif);
+      font-size: 2rem;
       font-weight: 700;
+      color: var(--text-color);
       margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+    #home p, #sobre p, #contato p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin-top: 0;
     }
     .produtos {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
     .produto {
-      border: 1px solid #ddd;
+      border: none;
+      background: #fafafa;
+      padding: 1rem;
       border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 0 8px rgba(183,110,121,0.2);
-      background: #fff;
+      text-align: center;
       transition: transform 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
     }
     .produto:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(183,110,121,0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(183,110,121,0.25);
     }
     .produto img {
       width: 100%;
-      display: block;
-    }
-    .produto-info {
-      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      height: 320px;
     }
     .produto-info h3 {
-      margin: 0 0 0.5rem 0;
-      color: var(--rose-gold);
-      font-size: 1.2rem;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 0 0 0.4rem;
+      color: var(--text-color);
+      letter-spacing: 0.05em;
     }
     .produto-info p {
+      font-family: var(--font-sans);
+      color: var(--text-secondary);
+      font-size: 1rem;
       margin: 0;
-      color: #555;
-      font-size: 0.95rem;
+      line-height: 1.4;
     }
     footer {
+      border-top: 1px solid #eee;
+      padding: 2rem 1.5rem;
       text-align: center;
-      padding: 1.5rem;
-      border-top: 2px solid var(--rose-gold);
-      color: var(--rose-gold);
-      font-weight: 600;
-      margin-top: 3rem;
-    }
-    /* Botão som */
-    #audioControl {
-      background: var(--rose-gold);
-      border: none;
-      color: #fff;
-      padding: 0.4rem 0.8rem;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
+      color: var(--text-secondary);
       font-size: 0.9rem;
-      transition: background 0.3s ease;
-    }
-    #audioControl:hover {
-      background: var(--rose-gold-light);
+      letter-spacing: 0.05em;
     }
   </style>
 </head>
@@ -126,7 +139,7 @@
 <main>
   <section id="home">
     <h2>Bem-vinda à ATScloset</h2>
-    <p>Moda feminina com estilo minimalista e detalhes em rose gold. Descubra nossa coleção exclusiva.</p>
+    <p>Moda feminina elegante, minimalista e sofisticada com toque delicado de rose gold.</p>
   </section>
 
   <section id="produtos">
@@ -166,32 +179,11 @@
     <p>Email: contato@atscloset.com.br</p>
     <p>Telefone: (11) 99999-9999</p>
   </section>
-
-  <button id="audioControl">Desligar Música</button>
-  <audio id="backgroundAudio" loop autoplay>
-    <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c39f28f56b.mp3?filename=relaxing-background-music-11298.mp3" type="audio/mpeg" />
-    Seu navegador não suporta o elemento de áudio.
-  </audio>
 </main>
 
 <footer>
   &copy; 2025 ATScloset - Todos os direitos reservados
 </footer>
-
-<script>
-  const audio = document.getElementById('backgroundAudio');
-  const btn = document.getElementById('audioControl');
-
-  btn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      btn.textContent = 'Desligar Música';
-    } else {
-      audio.pause();
-      btn.textContent = 'Ligar Música';
-    }
-  });
-</script>
 
 </body>
 </html>
