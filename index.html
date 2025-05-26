@@ -3,124 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ATScloset - Elegância Minimalista</title>
+  <title>ATScloset - Moda Feminina</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
-    
     :root {
       --rose-gold: #b76e79;
-      --text-color: #1a1a1a;
-      --text-secondary: #555555;
-      --bg-color: #ffffff;
-      --font-serif: 'Playfair Display', serif;
-      --font-sans: 'Roboto', sans-serif;
+      --bg: #ffffff;
+      --text: #333;
+      --light: #f9f9f9;
+      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    * {
-      box-sizing: border-box;
-    }
+
     body {
       margin: 0;
-      background: var(--bg-color);
-      color: var(--text-color);
-      font-family: var(--font-sans);
-      line-height: 1.6;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
     }
+
     header {
-      border-bottom: 1px solid #eee;
-      padding: 1.5rem 2rem;
+      background: var(--bg);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid var(--rose-gold);
     }
+
     header h1 {
-      font-family: var(--font-serif);
-      font-weight: 700;
-      font-size: 2.2rem;
-      color: var(--text-color);
-      margin: 0;
-      letter-spacing: 0.1em;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--text-secondary);
-      margin-left: 2rem;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-      letter-spacing: 0.05em;
-    }
-    nav a:hover {
       color: var(--rose-gold);
-      border-bottom: 2px solid var(--rose-gold);
-      padding-bottom: 4px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0;
     }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: var(--rose-gold);
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #a25e69;
+    }
+
     main {
-      max-width: 900px;
-      margin: 3rem auto 4rem;
-      padding: 0 1.5rem;
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
     }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
     section h2 {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text-color);
-      margin-bottom: 1rem;
-      letter-spacing: 0.1em;
+      font-size: 1.6rem;
+      color: var(--rose-gold);
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
     }
-    #home p, #sobre p, #contato p {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin-top: 0;
-    }
+
     .produtos {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
     }
+
     .produto {
-      border: none;
-      background: #fafafa;
-      padding: 1rem;
+      border: 1px solid #eee;
       border-radius: 8px;
-      text-align: center;
-      transition: transform 0.3s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
     }
+
     .produto:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(183,110,121,0.25);
+      transform: scale(1.03);
     }
+
     .produto img {
       width: 100%;
-      border-radius: 6px;
-      margin-bottom: 1rem;
-      object-fit: cover;
-      height: 320px;
+      display: block;
     }
+
+    .produto-info {
+      padding: 1rem;
+    }
+
     .produto-info h3 {
-      font-family: var(--font-serif);
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin: 0 0 0.4rem;
-      color: var(--text-color);
-      letter-spacing: 0.05em;
+      color: var(--rose-gold);
+      font-size: 1.1rem;
+      margin: 0 0 0.5rem 0;
     }
+
     .produto-info p {
-      font-family: var(--font-sans);
-      color: var(--text-secondary);
-      font-size: 1rem;
-      margin: 0;
-      line-height: 1.4;
+      font-size: 0.95rem;
+      color: #666;
     }
+
     footer {
-      border-top: 1px solid #eee;
-      padding: 2rem 1.5rem;
       text-align: center;
-      color: var(--text-secondary);
+      padding: 2rem;
       font-size: 0.9rem;
-      letter-spacing: 0.05em;
+      color: var(--rose-gold);
+      border-top: 1px solid #ddd;
+      margin-top: 3rem;
     }
   </style>
 </head>
@@ -129,60 +119,78 @@
 <header>
   <h1>ATScloset</h1>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#produtos">Produtos</a>
-    <a href="#sobre">Sobre</a>
+    <a href="#novidades">Novidades</a>
+    <a href="#shorts">Shorts</a>
+    <a href="#saias">Saias</a>
+    <a href="#blusas">Blusas</a>
     <a href="#contato">Contato</a>
   </nav>
 </header>
 
 <main>
-  <section id="home">
-    <h2>Bem-vinda à ATScloset</h2>
-    <p>Moda feminina elegante, minimalista e sofisticada com toque delicado de rose gold.</p>
-  </section>
 
-  <section id="produtos">
-    <h2>Produtos</h2>
+  <section id="novidades">
+    <h2>Novidades</h2>
     <div class="produtos">
       <div class="produto">
-        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" alt="Vestido Rosa" />
+        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Vestido Rosé" />
         <div class="produto-info">
-          <h3>Vestido Rosa</h3>
-          <p>Vestido minimalista em tom rosa pastel, perfeito para qualquer ocasião.</p>
-        </div>
-      </div>
-      <div class="produto">
-        <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=400&q=80" alt="Blusa Branca" />
-        <div class="produto-info">
-          <h3>Blusa Branca</h3>
-          <p>Blusa básica branca com corte elegante para o dia a dia.</p>
-        </div>
-      </div>
-      <div class="produto">
-        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Saia Rose Gold" />
-        <div class="produto-info">
-          <h3>Saia Rose Gold</h3>
-          <p>Saia com brilho rose gold para ocasiões especiais.</p>
+          <h3>Vestido Rosé</h3>
+          <p>Minimalista e elegante. Perfeito para eventos especiais.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="sobre">
-    <h2>Sobre a ATScloset</h2>
-    <p>A ATScloset nasceu para oferecer moda feminina minimalista com um toque sofisticado. Nossa missão é valorizar a beleza e o estilo com peças cuidadosamente selecionadas.</p>
+  <section id="shorts">
+    <h2>Shorts</h2>
+    <div class="produtos">
+      <div class="produto">
+        <img src="https://images.unsplash.com/photo-1618354691373-fdf7c3ec7d5b?auto=format&fit=crop&w=600&q=80" alt="Short Jeans" />
+        <div class="produto-info">
+          <h3>Short Jeans</h3>
+          <p>Estilo casual com cintura alta e lavagem clara.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="saias">
+    <h2>Saias</h2>
+    <div class="produtos">
+      <div class="produto">
+        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80" alt="Saia Rose Gold" />
+        <div class="produto-info">
+          <h3>Saia Rose Gold</h3>
+          <p>Brilho na medida certa para ocasiões especiais.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blusas">
+    <h2>Blusas</h2>
+    <div class="produtos">
+      <div class="produto">
+        <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=600&q=80" alt="Blusa Branca" />
+        <div class="produto-info">
+          <h3>Blusa Branca</h3>
+          <p>Corte elegante e tecido leve para o dia a dia.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="contato">
     <h2>Contato</h2>
     <p>Email: contato@atscloset.com.br</p>
-    <p>Telefone: (11) 99999-9999</p>
+    <p>Instagram: <a href="https://instagram.com/atscloset" target="_blank">@atscloset</a></p>
   </section>
+
 </main>
 
 <footer>
-  &copy; 2025 ATScloset - Todos os direitos reservados
+  &copy; 2025 ATScloset - Todos os direitos reservados.
 </footer>
 
 </body>
