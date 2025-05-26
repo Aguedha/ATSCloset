@@ -7,110 +7,196 @@
   <style>
     :root {
       --rose-gold: #b76e79;
-      --bg: #ffffff;
-      --text: #333;
-      --light: #f9f9f9;
-      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --rose-gold-light: #d4a1a5;
+      --text-color: #333;
+      --bg-color: #fff;
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      line-height: 1.5;
     }
-
     header {
-      background: var(--bg);
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 2px solid var(--rose-gold);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--rose-gold);
+      z-index: 10;
     }
-
     header h1 {
       color: var(--rose-gold);
-      font-size: 1.8rem;
-      font-weight: bold;
+      font-weight: 700;
       margin: 0;
+      font-size: 1.8rem;
+      cursor: pointer;
     }
-
     nav a {
-      margin-left: 1.5rem;
       text-decoration: none;
       color: var(--rose-gold);
-      font-weight: 500;
+      margin-left: 2rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      font-size: 1rem;
     }
-
     nav a:hover {
-      color: #a25e69;
+      color: var(--rose-gold-light);
     }
-
     main {
-      padding: 2rem 1rem;
       max-width: 1200px;
-      margin: auto;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
-
-    section {
-      margin-bottom: 3rem;
-    }
-
-    section h2 {
-      font-size: 1.6rem;
+    h2.section-title {
+      font-weight: 700;
       color: var(--rose-gold);
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
-
-    .produtos {
+    .produtos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+      gap: 1.8rem;
     }
-
-    .produto {
-      border: 1px solid #eee;
-      border-radius: 8px;
-      background: #fff;
+    .produto-card {
+      cursor: pointer;
+      border: 1px solid #ddd;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
+      background: #fff;
+      box-shadow: 0 3px 6px rgba(183,110,121,0.15);
+      transition: box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-
-    .produto:hover {
-      transform: scale(1.03);
+    .produto-card:hover {
+      box-shadow: 0 10px 20px rgba(183,110,121,0.35);
     }
-
-    .produto img {
+    .produto-card img {
       width: 100%;
-      display: block;
+      height: 320px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+      transition: transform 0.3s ease;
+    }
+    .produto-card:hover img {
+      transform: scale(1.05);
+    }
+    .produto-info {
+      padding: 1rem 1.2rem;
+      width: 100%;
+      text-align: center;
+    }
+    .produto-info h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+      color: var(--rose-gold);
+      font-weight: 700;
+    }
+    .produto-info p {
+      margin: 0;
+      color: #666;
+      font-size: 0.95rem;
+      min-height: 48px;
     }
 
-    .produto-info {
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
       padding: 1rem;
     }
-
-    .produto-info h3 {
+    .modal.open {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 8px 20px rgba(183,110,121,0.4);
+      position: relative;
+      padding: 1rem;
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 1.8rem;
+      font-weight: 700;
       color: var(--rose-gold);
-      font-size: 1.1rem;
-      margin: 0 0 0.5rem 0;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+    }
+    .modal-img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .modal-info h3 {
+      margin-top: 0;
+      color: var(--rose-gold);
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    .modal-info p {
+      color: #444;
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+    .modal-info .price {
+      font-weight: 700;
+      color: var(--rose-gold);
+      font-size: 1.4rem;
     }
 
-    .produto-info p {
-      font-size: 0.95rem;
-      color: #666;
-    }
-
+    /* Footer */
     footer {
       text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
+      padding: 1.5rem;
+      border-top: 2px solid var(--rose-gold);
       color: var(--rose-gold);
-      border-top: 1px solid #ddd;
+      font-weight: 600;
       margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
+      .produto-card img {
+        height: 240px;
+      }
+      .modal-content {
+        max-width: 90vw;
+        max-height: 80vh;
+      }
     }
   </style>
 </head>
@@ -119,79 +205,135 @@
 <header>
   <h1>ATScloset</h1>
   <nav>
-    <a href="#novidades">Novidades</a>
-    <a href="#shorts">Shorts</a>
-    <a href="#saias">Saias</a>
-    <a href="#blusas">Blusas</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#sobre">Sobre</a>
     <a href="#contato">Contato</a>
   </nav>
 </header>
 
 <main>
-
-  <section id="novidades">
-    <h2>Novidades</h2>
-    <div class="produtos">
-      <div class="produto">
-        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Vestido Rosé" />
-        <div class="produto-info">
-          <h3>Vestido Rosé</h3>
-          <p>Minimalista e elegante. Perfeito para eventos especiais.</p>
-        </div>
-      </div>
+  <section id="produtos">
+    <h2 class="section-title">Produtos</h2>
+    <div class="produtos-grid" id="produtosGrid">
+      <!-- Produtos serão inseridos aqui pelo JS -->
     </div>
   </section>
 
-  <section id="shorts">
-    <h2>Shorts</h2>
-    <div class="produtos">
-      <div class="produto">
-        <img src="https://images.unsplash.com/photo-1618354691373-fdf7c3ec7d5b?auto=format&fit=crop&w=600&q=80" alt="Short Jeans" />
-        <div class="produto-info">
-          <h3>Short Jeans</h3>
-          <p>Estilo casual com cintura alta e lavagem clara.</p>
-        </div>
-      </div>
-    </div>
+  <section id="sobre" style="margin-top: 4rem;">
+    <h2 class="section-title">Sobre a ATScloset</h2>
+    <p>A ATScloset oferece moda feminina com estilo minimalista, elegante e moderno. Peças cuidadosamente escolhidas para valorizar a sua beleza.</p>
   </section>
 
-  <section id="saias">
-    <h2>Saias</h2>
-    <div class="produtos">
-      <div class="produto">
-        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80" alt="Saia Rose Gold" />
-        <div class="produto-info">
-          <h3>Saia Rose Gold</h3>
-          <p>Brilho na medida certa para ocasiões especiais.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="blusas">
-    <h2>Blusas</h2>
-    <div class="produtos">
-      <div class="produto">
-        <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=600&q=80" alt="Blusa Branca" />
-        <div class="produto-info">
-          <h3>Blusa Branca</h3>
-          <p>Corte elegante e tecido leve para o dia a dia.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contato">
-    <h2>Contato</h2>
+  <section id="contato" style="margin-top: 4rem;">
+    <h2 class="section-title">Contato</h2>
     <p>Email: contato@atscloset.com.br</p>
-    <p>Instagram: <a href="https://instagram.com/atscloset" target="_blank">@atscloset</a></p>
+    <p>Telefone: (11) 99999-9999</p>
   </section>
-
 </main>
 
 <footer>
-  &copy; 2025 ATScloset - Todos os direitos reservados.
+  &copy; 2025 ATScloset - Todos os direitos reservados
 </footer>
+
+<!-- Modal -->
+<div class="modal" id="modalProduto">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <img src="" alt="" class="modal-img" id="modalImg" />
+    <div class="modal-info">
+      <h3 id="modalTitulo"></h3>
+      <p id="modalDescricao"></p>
+      <p class="price" id="modalPreco"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const produtos = [
+    {
+      id: 1,
+      nome: "Short Jeans Rasgado",
+      descricao: "Short jeans com estilo rasgado, perfeito para o verão e looks casuais.",
+      preco: "R$ 79,90",
+      imagem: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      id: 2,
+      nome: "Short Alfaiataria Rose Gold",
+      descricao: "Short de alfaiataria na cor rose gold, ideal para eventos mais sofisticados.",
+      preco: "R$ 129,90",
+      imagem: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      id: 3,
+      nome: "Short Jeans Clássico",
+      descricao: "Short jeans clássico com lavagem clara, um item básico para o guarda-roupa.",
+      preco: "R$ 89,90",
+      imagem: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      id: 4,
+      nome: "Saia Midi Plissada",
+      descricao: "Saia midi plissada em tom neutro, elegante e versátil para diversas ocasiões.",
+      preco: "R$ 139,90",
+      imagem: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      id: 5,
+      nome: "Saia Jeans com Barra Desfiada",
+      descricao: "Saia jeans com barra desfiada, estilo descontraído e moderno.",
+      preco: "R$ 99,90",
+      imagem: "https://images.unsplash.com/photo-1562157873-818bc0726c29?auto=format&fit=crop&w=400&q=80"
+    }
+  ];
+
+  const produtosGrid = document.getElementById('produtosGrid');
+  const modal = document.getElementById('modalProduto');
+  const modalImg = document.getElementById('modalImg');
+  const modalTitulo = document.getElementById('modalTitulo');
+  const modalDescricao = document.getElementById('modalDescricao');
+  const modalPreco = document.getElementById('modalPreco');
+  const modalCloseBtn = document.getElementById('modalClose');
+
+  // Criar os cards dos produtos
+  produtos.forEach(produto => {
+    const card = document.createElement('div');
+    card.classList.add('produto-card');
+    card.setAttribute('tabindex', '0');
+    card.innerHTML = `
+      <img src="${produto.imagem}" alt="${produto.nome}" />
+      <div class="produto-info">
+        <h3>${produto.nome}</h3>
+        <p>${produto.descricao}</p>
+      </div>
+    `;
+    card.addEventListener('click', () => abrirModal(produto));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter') abrirModal(produto);
+    });
+    produtosGrid.appendChild(card);
+  });
+
+  function abrirModal(produto) {
+    modalImg.src = produto.imagem;
+    modalImg.alt = produto.nome;
+    modalTitulo.textContent = produto.nome;
+    modalDescricao.textContent = produto.descricao;
+    modalPreco.textContent = produto.preco;
+    modal.classList.add('open');
+  }
+
+  modalCloseBtn.addEventListener('click', () => {
+    modal.classList.remove('open');
+  });
+
+  // Fecha modal clicando fora do conteúdo
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.classList.remove('open');
+    }
+  });
+</script>
 
 </body>
 </html>
